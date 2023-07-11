@@ -1,0 +1,13 @@
+-Un boton a card
+-necesitamos una  vista/componente carrito que me agregue los productos
+-Botones de incrementar cantidad.
+-Eliminar productos.
+-Finalizar compra, que me muestre todo el resumen de compra.
+
+DATOS FALTANTES
+-Precios
+
+genrar las acciones del reducer, 
+nos trae dos estado use reducer y el pach. Aciones que nos modifiquen ele stadoa ctual. 
+Son funciones que se ejecutarian para cambiar el estado. ej : agregar al carrito
+Y por otro lado el contexto 
