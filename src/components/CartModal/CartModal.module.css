@@ -1,0 +1,76 @@
+/* CartModal.module.css */
+
+.modalBg {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal {
+    background-color: #fff;
+    width: 400px;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .closeBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+  
+  .modal h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .modalBody {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .modalDrinksList {
+    margin-bottom: 10px;
+  }
+  
+  .modalDrinksList article {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .modalDrinksList img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+  
+  .modalDrinksList span {
+    margin-right: 10px;
+  }
+  
+  .counter {
+    display: flex;
+    align-items: center;
+  }
+  
+  .counter button {
+    background-color: #eee;
+    border: none;
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+  }
+  
+  .modalAside {
+    background-color: #f2f2f2;
+    padding: 10px;
+  }
+  
