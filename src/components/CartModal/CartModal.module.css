@@ -1,76 +1,145 @@
 /* CartModal.module.css */
 
 .modalBg {
-    background-color: rgba(0, 0, 0, 0.5);
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    /* right: 0;
+    bottom: 0;
+    */
   }
   
-  .modal {
+  .modalBg .modal {
     background-color: #fff;
-    width: 400px;
-    padding: 20px;
-    border-radius: 5px;
+    min-width: 600px;
+    border-radius: 8px;
+    padding: 1rem;
   }
   
-  .closeBtn {
-    position: absolute;
+
+/* .icon {
+
+} */
+
+  .icon {
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    /* float: left; */
+    position: absolute; 
     top: 10px;
     right: 10px;
-    cursor: pointer;
   }
   
   .modal h2 {
-    font-size: 20px;
+    font-size: 30px;
     margin-bottom: 10px;
   }
   
   .modalBody {
+    display: grid;
+    grid-template-columns: 75% 25%;
+    /* flex-direction: column; */
+  }
+
+  .card {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.4rem;
+    border-bottom: thin solid grey;
   }
   
-  .modalDrinksList {
-    margin-bottom: 10px;
-  }
+ 
   
-  .modalDrinksList article {
-    display: flex;
+  .card article {
+    display: grid;
     align-items: center;
     margin-bottom: 10px;
   }
   
-  .modalDrinksList img {
+  .card img {
     width: 50px;
     height: 50px;
+    object-fit: cover;
+    /* margin-right: 10px; */
+  }
+  
+  .card span {
+    display: inline-block;
+    padding: 8px;
     margin-right: 10px;
   }
   
-  .modalDrinksList span {
-    margin-right: 10px;
+  .card .counter {
+    border: thin solid grey;
+    border-radius: 4px;
+    padding: 4px;
+    /* display: flex;
+    align-items: center; */
   }
   
-  .counter {
+  .card .counter button {
+    background-color: grey;
+    color: #fff;
+    border-radius: 4px;
+    transition: all 0.5s ease ;
+    width: 24px;
+    padding: 5px 10px;
+
+ 
+
+
+  }
+  .card .counter button:hover {
+    border: none;
+    background-color: transparent;
+    width: 24px;
+
+  }
+
+  .card .iconTrash {
+    color: red;
+    cursor: pointer;
+  }
+
+  .btnContainer {
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
   }
-  
-  .counter button {
-    background-color: #eee;
+
+  .btnContainer button{
+    background-color: transparent;
     border: none;
-    padding: 5px 10px;
-    margin-right: 5px;
-    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+  }
+
+  .btnContainer  button {
+    background-color: transparent;
+    border: none;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 4px;
+  }
+
+  .btnContainer button.clearCard {
+    background-color: blue;
   }
   
   .modalAside {
     background-color: #f2f2f2;
     padding: 10px;
   }
+
+ 
   
