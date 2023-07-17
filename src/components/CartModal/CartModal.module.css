@@ -1,5 +1,4 @@
 /* CartModal.module.css */
-
 .modalBg {
     position: fixed;
     top: 0;
@@ -21,18 +20,13 @@
     border-radius: 8px;
     padding: 1rem;
   }
-  
-
-/* .icon {
-
-} */
 
   .icon {
-    color: #fff;
+    color: grey;
     font-size: 1.5rem;
     cursor: pointer;
-    /* float: left; */
-    position: absolute; 
+    float: right; 
+    /* position: absolute;  */
     top: 10px;
     right: 10px;
   }
@@ -50,14 +44,12 @@
 
   .card {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     padding: 0.4rem;
-    border-bottom: thin solid grey;
+    border-bottom: thin solid lightcoral;
   }
-  
- 
-  
+
   .card article {
     display: grid;
     align-items: center;
@@ -86,21 +78,16 @@
   }
   
   .card .counter button {
-    background-color: grey;
-    color: #fff;
-    border-radius: 4px;
-    transition: all 0.5s ease ;
-    width: 24px;
-    padding: 5px 10px;
-
- 
-
-
-  }
-  .card .counter button:hover {
     border: none;
     background-color: transparent;
     width: 24px;
+    color: grey;
+    border-radius: 4px;
+    transition: all 0.5s ease ;
+  }
+  .card .counter button:hover {
+    background-color: grey;
+    color: #fff;
 
   }
 
@@ -112,16 +99,10 @@
   .btnContainer {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
   }
 
-  .btnContainer button{
-    background-color: transparent;
-    border: none;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-  }
 
   .btnContainer  button {
     background-color: transparent;
@@ -130,10 +111,17 @@
     font-size: 0.8rem;
     font-weight: 600;
     padding: 4px;
+    border-radius: 4px;
+    margin-bottom: 8px;
   }
 
-  .btnContainer button.clearCard {
-    background-color: blue;
+  .btnContainer button.clearCart {
+    background-color: lightskyblue;
+    color: grey;
+  }
+  .btnContainer button.confirmOrder {
+    background-color: lightgreen;
+    color: grey;
   }
   
   .modalAside {

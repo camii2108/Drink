@@ -1,76 +1,12 @@
 import React, { createContext, useReducer } from "react";
 import PropTypes from "prop-types";
+import { actionTypes }  from "../actions/cart.actions"
+import { cartReducer, cartInitialState   }  from "../reducers/cart.reducer"
 
 const CartContext = createContext();
 
-const cartInitialState = {
-  cartItems: [],
-};
 
-const actionTypes = {
-  ADD_TO_CART: "ADD_TO_CART",
-  REMOVE_ALL_FROM_CART: "REMOVE_ALL_FROM_CART",
-  REMOVE_ONE_FROM_CART: "REMOVE_ONE_FROM_CART",
-  CLEAR_CART: "CLEAR_CART",
-};
 
-function cartReducer(state, { type, payload }) {
-  const { idDrink, quantity } = payload;
-  const drinkInCart = state.cartItems.find((item) => item.idDrink === idDrink);
-
-  switch (type) {
-    case actionTypes.ADD_TO_CART:
-      if (drinkInCart) {
-        const cartItemsUpdated = state.cartItems.map((item) => {
-          if (item.idDrink === idDrink) {
-            return { ...item, quantity: item.quantity + 1 };
-          }
-          return item;
-        });
-        return {
-          ...state,
-          cartItems: cartItemsUpdated,
-        };
-      } else {
-        payload.quantity = 1;
-        return {
-          ...state,
-          cartItems: [...state.cartItems, payload],
-        };
-      }
-    case actionTypes.REMOVE_ONE_FROM_CART:
-      if (drinkInCart && drinkInCart.quantity > 1) {
-        const cartItemsUpdated = state.cartItems.map((item) => {
-          if (item.idDrink === idDrink) {
-            return { ...item, quantity: item.quantity - 1 };
-          }
-          return item;
-        });
-        return {
-          ...state,
-          cartItems: cartItemsUpdated,
-        };
-      } else {
-        // No se debe permitir una cantidad menor a 1, por lo que no se realiza ninguna acción
-        return state;
-      }
-    case actionTypes.REMOVE_ALL_FROM_CART:
-      const cartItemsUpdated = state.cartItems.filter(
-        (item) => item.idDrink !== idDrink
-      );
-      return {
-        ...state,
-        cartItems: cartItemsUpdated,
-      };
-    case actionTypes.CLEAR_CART:
-      return {
-        ...state,
-        cartItems: [],
-      };
-    default:
-      return state;
-  }
-}
 
 function CartProvider({ children }) {
   const [state, dispatch] = useReducer(cartReducer, cartInitialState);
@@ -91,12 +27,17 @@ function CartProvider({ children }) {
     dispatch({ type: actionTypes.CLEAR_CART });
   }
 
+  function sendOrder() {
+    alert(JSON.stringify)
+  }
+
   const cartValues = {
     cart: state,
     addToCart,
     removeOneFromCart,
     removeAllFromCart,
     clearCart,
+    sendOrder
   };
 
   return (

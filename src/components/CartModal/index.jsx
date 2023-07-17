@@ -1,46 +1,71 @@
-import React from "react";
+/* import React from "react"; */
 import styles from "./CartModal.module.css";
-/* import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark } from "@fortawesome/free-solid-svg-icons"; */
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faXmarkCircle } from "@fortawesome/free-solid-svg-icons";
+import useModal from "../../hooks/useModal";
+import {useCart} from "../../hooks/useCart";
+
 
 function CartModal() {
-  const {isOpen, toogleModal } = useModal();
-  return (
-    <div className={styles.modalBg}>
-      <div className={styles.modal}>
-     
-      <h2>Mi Carrito</h2>
-      <section className={styles.modalBody}>
-      <i className={styles.icon}>x</i>
-          <div className={styles.modalDrinksListContainer}>
+  const { isOpen, toogleModal } = useModal();
+  const {
+    cart,  
+    addToCart,
+    removeOneFromCart,
+    removeAllFromCart,
+    clearCart,
+    sendOrder } = useCart();
 
-          {/* Contenido adicional del modal */}
-            <article className={styles.card}>
-              <img src="https://www.thecocktaildb.com/images/media/drink/tqxyxx1472719737.jpg" alt="Nombre del producto" />
-              <span>Nombre del producto</span>
-              <span>Precio</span>
+  
+
+  if (isOpen) {
+    return (
+      <div className={styles.modalBg}>
+        <div className={styles.modal}>
+          <FontAwesomeIcon icon={faXmarkCircle} className={styles.icon} onClick={toogleModal} />
+          <h2>Mi Carrito</h2>
+          <section className={styles.modalBody}>
+            <div className={styles.modalDrinksListContainer}>
+            {cart.cartItems.map((drink) => (
+                  
+              <article key={drink.idDrink} className={styles.card}>
+              <img
+                src={drink.strDrinkThumb}
+                alt={`Imagen de ${drink.strDrink}`}
+              />
+              <span>{drink.strDrink}</span>
+              <span>{drink.price}</span>
               <div className={styles.counter}>
-                <button>-</button>
-                <span>Cantidad</span>
-                <button>+</button>
+                <button onClick={() => removeOneFromCart(drink.idDrink)}>-</button>
+                <span>{drink.quantity}</span>
+                <button onClick={() => addToCart(drink)}>+</button>
               </div>
-              {/* icono tachito de basura */}
-             
+              <FontAwesomeIcon 
+              icon={faTrash} 
+              className={styles.iconTrash} 
+              onClick={()=> removeAllFromCart(drink.idDrink)}
+              />
             </article>
-          </div>
-          <aside className={styles.modalAside}>
-            {/* Contenido adicional del modal */}
-            <p> Subtotal: XXXXXXXX</p>
-            <p> Total:XXXXXXX</p>
-            <div className={styles.btnContainer}>
-            <button className={styles.clear}>Vaciar carrito</button>
-            <button className={styles.confirmOrder}>Confirmar Compra</button>
+              ))
+            }
+
             </div>
-          </aside>
-        </section>
+            {/* Resumen de los datos que queremos exponer al cliente */}
+            <aside className={styles.modalAside}>
+              <p>Subtotal: XXXXXXXX</p>
+              <p>{/* Agrega el valor para el total */}</p>
+              <div className={styles.btnContainer}>
+                <button className={styles.clearCart} onClick={clearCart}>Vaciar carrito</button>
+                <button className={styles.confirmOrder} onClick={sendOrder}>Confirmar Compra</button>
+              </div>
+            </aside>
+          </section>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
+
+  return null;
 }
 
 export default CartModal;

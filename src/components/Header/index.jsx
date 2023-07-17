@@ -1,20 +1,18 @@
-import React, { useContext } from "react";
-import { FaShoppingCart } from "react-icons/fa";
-import { CartContext } from "../../context/CartProvider";
 import styles from "./Header.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import useModal from "../../hooks/useModal";
 
-const Header = () => {
-  const { cart, toggleCart } = useContext(CartContext);
+export default function Header() {
+  const {toogleModal} = useModal();
 
   return (
     <header className={`py-5 ${styles.header}`}>
       <h1>Buscador de Bebidas</h1>
-      <button className={styles.cartButton} onClick={toggleCart}>
-        <FaShoppingCart className={styles.cartIcon} />
-        <span className={styles.cartItemCount}>{cart.cartItems.length}</span>
-      </button>
+      <FontAwesomeIcon icon={faCartShopping}  onClick={toogleModal}/>
+
     </header>
   );
-};
+}
 
-export default Header;
+/* export default Header; */
