@@ -10,6 +10,7 @@ export default function AppRoutes() {
         <Route path="/login" element={<SignIn />} />
         <Route path="/register" element={<SignUp />} />
         
+        <Route path="/" element={<ProtectedRoute />} />
         <Route path="/" element={<Home />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
