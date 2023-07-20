@@ -28,7 +28,7 @@ function CartProvider({ children }) {
   }
 
   function sendOrder() {
-    alert(JSON.stringify)
+    alert(JSON.stringify(state))
   }
 
   const cartValues = {

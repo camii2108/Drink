@@ -38,11 +38,14 @@ export function cartReducer(state, { type, payload = {} }) {
         //quantity >1 ? => resta 1
         const cartItemsUpdated = state.cartItems.map((item) => {
           if (item.idDrink === idDrink) {
-            return { ...item, quantity: item.quantity - 1,
+            return { 
+              ...item,
+               quantity: item.quantity - 1,
             };
           }
           return item;
         });
+
         return {
           ...state,
           cartItems: cartItemsUpdated,
@@ -50,7 +53,7 @@ export function cartReducer(state, { type, payload = {} }) {
       }else{
         //quantity <1  => quita del carrito
         let cartItemsUpdated = state.cartItems.filter(
-          (item)=>item.idDrink !== idDrink);
+          (item)=>item.idDrink !== idDrink );
 
         return {
           ...state,
@@ -63,11 +66,13 @@ export function cartReducer(state, { type, payload = {} }) {
       // Remover completamente el producto del carrito
       if (drinkInCart) {
         const cartItemsUpdated = state.cartItems.filter(
-          (item) => item.idDrink !== idDrink);
+          (item) => item.idDrink !== idDrink
+          );
         return {
           ...state,
           cartItems: cartItemsUpdated,
         };
+
       }
       return state;
     case actionTypes.CLEAR_CART:
