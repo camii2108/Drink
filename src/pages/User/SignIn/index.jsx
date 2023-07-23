@@ -1,4 +1,3 @@
-{/* import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -13,6 +12,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Copyright from '../Copyright';
+import { Formik } from 'formik';
 
 
 // TODO remove, this demo shouldn't need to reset the theme.
@@ -20,14 +20,6 @@ import Copyright from '../Copyright';
 const defaultTheme = createTheme();
 
 export default function SignIn() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -45,10 +37,39 @@ export default function SignIn() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Ingresar
           </Typography>
+
+        <Formik
+        initialValues={{
+            name: "",
+            email:"",
+        }}
+        validate={ () => {
+            const errors = {};
+            if()
+
+            return errors;
+        }
+
+        }
+
+
+        >
+
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-            <TextField
+          <TextField
+          margin="normal"
+          required
+          fullWidth
+          name="name"
+          label="nombre"
+          type="name"
+          id="name"
+          autoComplete="current-password"
+        />  
+          
+          <TextField
               margin="normal"
               required
               fullWidth
@@ -58,16 +79,7 @@ export default function SignIn() {
               autoComplete="email"
               autoFocus
             />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
+           
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
@@ -93,9 +105,10 @@ export default function SignIn() {
               </Grid>
             </Grid>
           </Box>
+          </Formik>
         </Box>
         <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
   );
-} */}
+}
