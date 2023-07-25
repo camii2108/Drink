@@ -14,15 +14,17 @@ const AuthContext = createContext();
 
     useEffect(()=> {
         if(storedToken) {
-            const decodedToken = storedToken? jwt_decode(storedToken) : null;
+            const decodedToken = storedToken ? jwt_decode(storedToken) : null;
                 const { user } = decodedToken ? decodedToken : null;
+                
                 
                 setCurrentUser(user);
 
                 return navigate("/")
 
         }
-    }, [])
+    },  [storedToken, navigate]); // <-- Agrega navigate y storedToken como dependencias
+
 
 
 
@@ -52,8 +54,11 @@ const AuthContext = createContext();
                 const { user } = decodedToken ? decodedToken : null;
                 
                 setCurrentUser(user);
+                setTimeout(() => {
+                    navigate("/"); // Mueve la llamada a navigate dentro de setTimeout
+                  }, 1000);
 
-                return navigate("/")
+                {/* return navigate("/") */}
 
                 
             }else {
